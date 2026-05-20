@@ -1,28 +1,29 @@
-# 🚀 Galaxium Travels - Interplanetary Booking System
+# 🔒 PAM Advisor Platform
 
-A complete full-stack application for booking interplanetary space travel, featuring a modern React frontend and a FastAPI backend with dual REST and MCP protocol support.
+A complete full-stack AI-powered platform for Privileged Access Management (PAM) tool recommendations, featuring a modern React frontend and a FastAPI backend with dual REST and MCP protocol support.
 
 ## 🌟 Features
 
-- **Modern Space-Themed UI** - Beautiful, responsive interface with animated starfield
-- **Full Booking System** - Browse flights, make bookings, manage reservations
-- **Dual Protocol Backend** - REST API and MCP (Model Context Protocol) support
+- **AI-Powered Recommendations** - Intelligent PAM tool selection based on your requirements
+- **Multi-Dimensional Scoring** - 8 criteria evaluation (features, compliance, scalability, budget, etc.)
+- **PAM Tool Comparison** - Side-by-side comparison of leading PAM solutions
+- **Architecture Advisor** - Tailored deployment architecture recommendations
+- **Executive Briefings** - Generate reports for stakeholders and decision-makers
+- **Dual Protocol Backend** - REST API and MCP (Model Context Protocol) support for AI agents
 - **Type-Safe** - Full TypeScript frontend and Python type hints
-- **Real-Time Updates** - Live flight availability and booking status
-- **User Management** - Simple name/email authentication
 - **Production Ready** - Optimized builds and comprehensive error handling
 
 ## 🏗️ Architecture
 
 ```
-galaxium-travels-infrastructure/
-├── booking_system_backend/     # FastAPI backend (Python)
+pam-advisor-platform/
+├── pam_advisor_backend/        # FastAPI backend (Python)
 │   ├── server.py              # Main server with REST & MCP
 │   ├── services/              # Business logic layer
 │   ├── models.py              # SQLAlchemy ORM models
 │   └── tests/                 # Test suite
 │
-├── booking_system_frontend/    # React frontend (TypeScript)
+├── pam_advisor_frontend/       # React frontend (TypeScript)
 │   ├── src/
 │   │   ├── components/        # Reusable UI components
 │   │   ├── pages/            # Route pages
@@ -64,7 +65,7 @@ This will automatically:
 
 #### Start Backend:
 ```bash
-cd booking_system_backend
+cd pam_advisor_backend
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -73,7 +74,7 @@ python server.py
 
 #### Start Frontend (in a new terminal):
 ```bash
-cd booking_system_frontend
+cd pam_advisor_frontend
 npm install
 npm run dev
 ```
@@ -90,14 +91,14 @@ Once started, access:
 ## 📚 Documentation
 
 ### Backend
-See [booking_system_backend/README.md](booking_system_backend/README.md) for:
+See [pam_advisor_backend/README.md](pam_advisor_backend/README.md) for:
 - API endpoints documentation
 - MCP tools reference
 - Database schema
 - Testing instructions
 
 ### Frontend
-See [booking_system_frontend/README.md](booking_system_frontend/README.md) for:
+See [pam_advisor_frontend/README.md](pam_advisor_frontend/README.md) for:
 - Component documentation
 - Styling guide
 - Build instructions
@@ -105,20 +106,19 @@ See [booking_system_frontend/README.md](booking_system_frontend/README.md) for:
 
 ## 🎯 User Guide
 
-### Booking a Flight
+### Using PAM Advisor
 
-1. **Browse Flights** - Navigate to the Flights page to see all available routes
-2. **Search & Filter** - Use the search bar to find specific destinations
-3. **Sign In/Register** - Click "Book Now" and enter your name and email
-4. **Confirm Booking** - Review flight details and confirm your reservation
-5. **Manage Bookings** - View and cancel bookings from "My Bookings" page
+1. **Dashboard** - Overview of PAM tools and quick access to features
+2. **Compare Tools** - Browse and filter 15+ PAM solutions by deployment type, pricing, and features
+3. **AI Recommendations** - Get personalized PAM tool recommendations based on your requirements
+4. **Architecture Advisor** - Receive tailored deployment architecture guidance
 
-### Demo Data
+### PAM Tool Database
 
-The system comes pre-seeded with:
-- **10 Users** - Alice, Bob, Charlie, Diana, Eve, Frank, Grace, Heidi, Ivan, Judy
-- **10 Flights** - Routes between Earth, Mars, Moon, Venus, Jupiter, Europa, Pluto
-- **20 Sample Bookings** - Various booking statuses
+The platform includes comprehensive data on 15+ enterprise PAM solutions including:
+- CyberArk, BeyondTrust, Delinea, Okta, Microsoft Entra, HashiCorp Vault
+- AWS Secrets Manager, Azure Key Vault, Google Secret Manager
+- And more leading PAM vendors
 
 ## 🛠️ Technology Stack
 
@@ -144,13 +144,13 @@ The system comes pre-seeded with:
 
 ### Backend Tests
 ```bash
-cd booking_system_backend
+cd pam_advisor_backend
 pytest
 ```
 
 ### Frontend Build Test
 ```bash
-cd booking_system_frontend
+cd pam_advisor_frontend
 npm run build
 ```
 
@@ -158,14 +158,14 @@ npm run build
 
 ### Backend
 ```bash
-cd booking_system_backend
+cd pam_advisor_backend
 pip install -r requirements.txt
 uvicorn server:app --host 0.0.0.0 --port 8080
 ```
 
 ### Frontend
 ```bash
-cd booking_system_frontend
+cd pam_advisor_frontend
 npm run build
 # Deploy the 'dist' folder to your hosting service
 ```
@@ -176,13 +176,13 @@ Both backend and frontend include Dockerfiles for containerized deployment.
 ## 🎨 Customization
 
 ### Change API URL
-Edit `booking_system_frontend/.env`:
+Edit `pam_advisor_frontend/.env`:
 ```env
 VITE_API_URL=https://your-api-url.com
 ```
 
 ### Modify Theme Colors
-Edit `booking_system_frontend/tailwind.config.js`:
+Edit `pam_advisor_frontend/tailwind.config.js`:
 ```js
 colors: {
   'cosmic-purple': '#6366F1',
@@ -210,7 +210,7 @@ colors: {
 
 ## 📄 License
 
-This project is part of the Galaxium Travels booking system.
+This project is the PAM Advisor Platform for intelligent PAM tool selection.
 
 ## 🤝 Contributing
 
@@ -228,6 +228,6 @@ For issues or questions:
 
 ---
 
-**Built with ❤️ for space travelers** 🚀✨
+**Built with ❤️ for security professionals** 🔒✨
 
-*Explore the cosmos, one booking at a time!*
+*Empowering secure access management decisions!*

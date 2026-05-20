@@ -128,7 +128,7 @@ cython_debug/
 *.sqlite3
 *.db
 *.db-journal
-booking.db
+pam_advisor.db
 
 # Fly.io deployment
 fly.toml
@@ -139,9 +139,7 @@ desktop.ini
 
 .env
 
-### Additional files
-HR_database/.venv/
-booking_system_rest/.venv/
-galaxium-booking-web-app/.venv/
-architecture/.$galaxim-travel-infrastructure.drawio.dtmp
-architecture/.$galaxim-travel-infrastructure.drawio.bkp
+# PAM Advisor Backend
+pam_advisor_backend/.venv/
+
+# Made with Bob

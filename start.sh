@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Galaxium Travels - Start Script
+# PAM Advisor Platform - Start Script
 # Starts both backend and frontend servers
 
-echo "🚀 Starting Galaxium Travels..."
+echo "🔒 Starting PAM Advisor Platform..."
 echo ""
 
 # Colors for output
@@ -35,7 +35,7 @@ trap cleanup SIGINT SIGTERM
 
 # Start Backend
 echo -e "${BLUE}📡 Starting Backend Server...${NC}"
-cd booking_system_backend
+cd pam_advisor_backend
 
 # Check if virtual environment exists, create if not
 if [ ! -d ".venv" ]; then
@@ -60,7 +60,7 @@ sleep 2
 
 # Start Frontend
 echo -e "${BLUE}🎨 Starting Frontend Server...${NC}"
-cd booking_system_frontend
+cd pam_advisor_frontend
 
 # Install dependencies if node_modules doesn't exist
 if [ ! -d "node_modules" ]; then
@@ -76,7 +76,7 @@ cd ..
 echo -e "${GREEN}✅ Frontend started on http://localhost:5173${NC}"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "🌟 Galaxium Travels is running!"
+echo "🌟 PAM Advisor Platform is running!"
 echo ""
 echo "   Backend:  http://localhost:8080"
 echo "   Frontend: http://localhost:5173"
