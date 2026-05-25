@@ -127,49 +127,12 @@ export default function Dashboard() {
           ))}
         </motion.div>
 
-        {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-12"
-        >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">
-            Get Started
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-                className={`cyber-card p-6 bg-gradient-to-br ${feature.gradient} group relative overflow-hidden`}
-              >
-                <div className="scan-line"></div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`${feature.iconColor} p-3 bg-slate-800/50 rounded-lg border border-cyan-500/20 group-hover:scale-110 transition-transform`}>
-                    <feature.icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white">{feature.title}</h3>
-                </div>
-                <p className="text-gray-400 mb-6">{feature.description}</p>
-                <Link to={feature.link}>
-                  <Button className="w-full">
-                    Explore
-                  </Button>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Security Insights */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="cyber-card p-8 relative overflow-hidden"
+          transition={{ delay: 0.2 }}
+          className="cyber-card p-8 relative overflow-hidden mb-12"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-3xl"></div>
           <div className="relative z-10">
@@ -210,6 +173,44 @@ export default function Dashboard() {
             </div>
           </div>
         </motion.div>
+
+        {/* Quick Actions */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-12"
+        >
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            Get Started
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                className={`cyber-card p-6 bg-gradient-to-br ${feature.gradient} group relative overflow-hidden`}
+              >
+                <div className="scan-line"></div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`${feature.iconColor} p-3 bg-slate-800/50 rounded-lg border border-cyan-500/20 group-hover:scale-110 transition-transform`}>
+                    <feature.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                </div>
+                <p className="text-gray-400 mb-6">{feature.description}</p>
+                <Link to={feature.link}>
+                  <Button className="w-full">
+                    Explore
+                  </Button>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </div>
   );
