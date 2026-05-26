@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
-import { Shield, TrendingUp, Users, Server, AlertCircle, CheckCircle2, Lock, Eye } from 'lucide-react';
+import { Shield, TrendingUp, Users, Server, AlertCircle, CheckCircle2, Lock, Eye, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/common';
+import { useState } from 'react';
 
 export default function Dashboard() {
+  const [showPAMDetails, setShowPAMDetails] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const toggleCard = (cardName: string) => {
+    setExpandedCard(expandedCard === cardName ? null : cardName);
+  };
   const stats = [
     {
       icon: Shield,
@@ -136,41 +143,294 @@ export default function Dashboard() {
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-3xl"></div>
           <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-emerald-500/20 rounded-lg border border-emerald-500/30">
-                <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-emerald-500/20 rounded-lg border border-emerald-500/30">
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h2 className="text-2xl font-bold text-white">Why PAM Matters</h2>
               </div>
-              <h2 className="text-2xl font-bold text-white">Why PAM Matters</h2>
+              <Button
+                onClick={() => setShowPAMDetails(!showPAMDetails)}
+                className="flex items-center gap-2"
+              >
+                {showPAMDetails ? (
+                  <>
+                    <span>Hide Details</span>
+                    <ChevronUp className="w-4 h-4" />
+                  </>
+                ) : (
+                  <>
+                    <span>Show Details</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </>
+                )}
+              </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="space-y-3 p-4 bg-slate-800/30 rounded-lg border border-cyan-500/20">
-                <div className="flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-cyan-400" />
-                  <h3 className="text-lg font-semibold text-cyan-400">Threat Reduction</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+              {/* Threat Reduction Card */}
+              <div className="space-y-3 p-4 bg-slate-800/30 rounded-lg border border-cyan-500/20 hover:border-cyan-500/40 transition-all cursor-pointer"
+                   onClick={() => toggleCard('threat')}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Lock className="w-5 h-5 text-cyan-400" />
+                    <h3 className="text-lg font-semibold text-cyan-400">Threat Reduction</h3>
+                  </div>
+                  {expandedCard === 'threat' ? (
+                    <ChevronUp className="w-5 h-5 text-cyan-400" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-cyan-400" />
+                  )}
                 </div>
                 <p className="text-gray-400 text-sm">
                   Reduce insider threats and external attacks by securing privileged accounts
                 </p>
+                
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: expandedCard === 'threat' ? 'auto' : 0,
+                    opacity: expandedCard === 'threat' ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4 mt-4 border-t border-cyan-500/20 space-y-3">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>80% of breaches</strong> involve compromised privileged credentials</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Real-time monitoring</strong> detects suspicious activities instantly</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Credential rotation</strong> eliminates static passwords</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Session isolation</strong> prevents lateral movement</p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-              <div className="space-y-3 p-4 bg-slate-800/30 rounded-lg border border-teal-500/20">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-teal-400" />
-                  <h3 className="text-lg font-semibold text-teal-400">Compliance</h3>
+
+              {/* Compliance Card */}
+              <div className="space-y-3 p-4 bg-slate-800/30 rounded-lg border border-teal-500/20 hover:border-teal-500/40 transition-all cursor-pointer"
+                   onClick={() => toggleCard('compliance')}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-teal-400" />
+                    <h3 className="text-lg font-semibold text-teal-400">Compliance</h3>
+                  </div>
+                  {expandedCard === 'compliance' ? (
+                    <ChevronUp className="w-5 h-5 text-teal-400" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-teal-400" />
+                  )}
                 </div>
                 <p className="text-gray-400 text-sm">
                   Meet regulatory requirements with comprehensive audit trails and access controls
                 </p>
+                
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: expandedCard === 'compliance' ? 'auto' : 0,
+                    opacity: expandedCard === 'compliance' ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4 mt-4 border-t border-teal-500/20 space-y-3">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-teal-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>SOX, PCI-DSS, HIPAA</strong> compliance ready</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-teal-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Complete session recording</strong> for forensic analysis</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-teal-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Automated reporting</strong> for auditors</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-teal-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Separation of duties</strong> enforcement</p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-              <div className="space-y-3 p-4 bg-slate-800/30 rounded-lg border border-emerald-500/20">
-                <div className="flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-emerald-400" />
-                  <h3 className="text-lg font-semibold text-emerald-400">Operational Efficiency</h3>
+
+              {/* Operational Efficiency Card */}
+              <div className="space-y-3 p-4 bg-slate-800/30 rounded-lg border border-emerald-500/20 hover:border-emerald-500/40 transition-all cursor-pointer"
+                   onClick={() => toggleCard('operational')}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Eye className="w-5 h-5 text-emerald-400" />
+                    <h3 className="text-lg font-semibold text-emerald-400">Operational Efficiency</h3>
+                  </div>
+                  {expandedCard === 'operational' ? (
+                    <ChevronUp className="w-5 h-5 text-emerald-400" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-emerald-400" />
+                  )}
                 </div>
                 <p className="text-gray-400 text-sm">
                   Streamline privileged access workflows with automated provisioning and JIT access
                 </p>
+                
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: expandedCard === 'operational' ? 'auto' : 0,
+                    opacity: expandedCard === 'operational' ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4 mt-4 border-t border-emerald-500/20 space-y-3">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>Just-in-Time access</strong> reduces standing privileges</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>60% reduction</strong> in helpdesk tickets</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>SSO integration</strong> for seamless access</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 text-sm"><strong>API automation</strong> for DevOps workflows</p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
+
+            {/* Detailed Points - Expandable Section */}
+            <motion.div
+              initial={false}
+              animate={{
+                height: showPAMDetails ? 'auto' : 0,
+                opacity: showPAMDetails ? 1 : 0,
+              }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="pt-6 border-t border-cyan-500/20">
+                <h3 className="text-xl font-bold text-white mb-6">Detailed Benefits</h3>
+                
+                <div className="space-y-6">
+                  {/* Threat Reduction Details */}
+                  <div className="bg-slate-800/50 rounded-lg p-6 border border-cyan-500/20">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Lock className="w-6 h-6 text-cyan-400" />
+                      <h4 className="text-lg font-bold text-cyan-400">Threat Reduction in Detail</h4>
+                    </div>
+                    <ul className="space-y-3 text-gray-300">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">80% of breaches</strong> involve compromised privileged credentials - PAM prevents unauthorized access</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Real-time monitoring</strong> detects and blocks suspicious privileged account activities</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Credential rotation</strong> automatically changes passwords, eliminating static credentials</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Session isolation</strong> prevents lateral movement by containing privileged sessions</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Compliance Details */}
+                  <div className="bg-slate-800/50 rounded-lg p-6 border border-teal-500/20">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Shield className="w-6 h-6 text-teal-400" />
+                      <h4 className="text-lg font-bold text-teal-400">Compliance Requirements</h4>
+                    </div>
+                    <ul className="space-y-3 text-gray-300">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">SOX, PCI-DSS, HIPAA</strong> compliance through comprehensive audit trails and access controls</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Complete session recording</strong> provides forensic evidence for security investigations</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Automated reporting</strong> generates compliance reports for auditors and regulators</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Separation of duties</strong> enforces least privilege and prevents conflicts of interest</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Operational Efficiency Details */}
+                  <div className="bg-slate-800/50 rounded-lg p-6 border border-emerald-500/20">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Eye className="w-6 h-6 text-emerald-400" />
+                      <h4 className="text-lg font-bold text-emerald-400">Operational Benefits</h4>
+                    </div>
+                    <ul className="space-y-3 text-gray-300">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Just-in-Time (JIT) access</strong> provides temporary elevated privileges, reducing standing access</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Self-service workflows</strong> reduce IT helpdesk burden by 60% through automated provisioning</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">Single sign-on (SSO)</strong> integration streamlines access while maintaining security</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-white">API-driven automation</strong> integrates with DevOps pipelines for secrets management</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Additional Business Value */}
+                  <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg p-6 border border-cyan-500/30">
+                    <h4 className="text-lg font-bold text-white mb-4">Business Impact</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <div className="text-3xl font-bold text-cyan-400">$4.45M</div>
+                        <div className="text-sm text-gray-400">Average cost of a data breach (IBM 2023)</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-3xl font-bold text-teal-400">60%</div>
+                        <div className="text-sm text-gray-400">Reduction in helpdesk tickets</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-3xl font-bold text-emerald-400">90%</div>
+                        <div className="text-sm text-gray-400">Faster incident response time</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-3xl font-bold text-blue-400">100%</div>
+                        <div className="text-sm text-gray-400">Audit trail coverage</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
