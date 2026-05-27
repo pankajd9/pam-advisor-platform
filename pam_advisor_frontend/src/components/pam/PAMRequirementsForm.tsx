@@ -47,8 +47,8 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Privileged Accounts */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-            <Shield className="w-4 h-4 text-cosmic-purple" />
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+            <Shield className="w-4 h-4 text-blue-600" />
             Number of Privileged Accounts
           </label>
           <Input
@@ -64,8 +64,8 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
 
         {/* Servers */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-            <Server className="w-4 h-4 text-cosmic-purple" />
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+            <Server className="w-4 h-4 text-blue-600" />
             Number of Servers
           </label>
           <Input
@@ -81,8 +81,8 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
 
         {/* Deployment Preference */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-            <Cloud className="w-4 h-4 text-cosmic-purple" />
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+            <Cloud className="w-4 h-4 text-blue-600" />
             Deployment Preference
           </label>
           <select
@@ -93,7 +93,7 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
                 deploymentPreference: e.target.value as 'SaaS' | 'On-Prem' | 'Hybrid',
               })
             }
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cosmic-purple"
+            className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="SaaS">SaaS (Cloud)</option>
             <option value="On-Prem">On-Premises</option>
@@ -103,8 +103,8 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
 
         {/* Budget Range */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-            <DollarSign className="w-4 h-4 text-cosmic-purple" />
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+            <DollarSign className="w-4 h-4 text-blue-600" />
             Budget Range
           </label>
           <select
@@ -115,7 +115,7 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
                 budgetRange: e.target.value as 'Low' | 'Medium' | 'High' | 'Enterprise',
               })
             }
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cosmic-purple"
+            className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="Low">Low (under $50k/year)</option>
             <option value="Medium">Medium ($50k - $200k/year)</option>
@@ -127,77 +127,77 @@ export function PAMRequirementsForm({ onSubmit }: PAMRequirementsFormProps) {
 
       {/* Feature Requirements */}
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold text-white">Feature Requirements</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Feature Requirements</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <label className="flex items-center gap-3 p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-750 transition-colors">
+          <label className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 hover:bg-blue-50 transition-colors">
             <input
               type="checkbox"
               checked={requirements.azureADIntegration}
               onChange={(e) =>
                 setRequirements({ ...requirements, azureADIntegration: e.target.checked })
               }
-              className="w-5 h-5 text-cosmic-purple bg-gray-700 border-gray-600 rounded focus:ring-cosmic-purple"
+              className="w-5 h-5 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
             />
-            <span className="text-gray-300">Azure AD Integration</span>
+            <span className="text-gray-700">Azure AD Integration</span>
           </label>
 
-          <label className="flex items-center gap-3 p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-750 transition-colors">
+          <label className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 hover:bg-blue-50 transition-colors">
             <input
               type="checkbox"
               checked={requirements.siemIntegration}
               onChange={(e) =>
                 setRequirements({ ...requirements, siemIntegration: e.target.checked })
               }
-              className="w-5 h-5 text-cosmic-purple bg-gray-700 border-gray-600 rounded focus:ring-cosmic-purple"
+              className="w-5 h-5 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
             />
-            <span className="text-gray-300">SIEM Integration</span>
+            <span className="text-gray-700">SIEM Integration</span>
           </label>
 
-          <label className="flex items-center gap-3 p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-750 transition-colors">
+          <label className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 hover:bg-blue-50 transition-colors">
             <input
               type="checkbox"
               checked={requirements.sessionRecording}
               onChange={(e) =>
                 setRequirements({ ...requirements, sessionRecording: e.target.checked })
               }
-              className="w-5 h-5 text-cosmic-purple bg-gray-700 border-gray-600 rounded focus:ring-cosmic-purple"
+              className="w-5 h-5 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
             />
-            <Eye className="w-4 h-4 text-cosmic-purple" />
-            <span className="text-gray-300">Session Recording</span>
+            <Eye className="w-4 h-4 text-blue-600" />
+            <span className="text-gray-700">Session Recording</span>
           </label>
 
-          <label className="flex items-center gap-3 p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-750 transition-colors">
+          <label className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 hover:bg-blue-50 transition-colors">
             <input
               type="checkbox"
               checked={requirements.jitAccess}
               onChange={(e) => setRequirements({ ...requirements, jitAccess: e.target.checked })}
-              className="w-5 h-5 text-cosmic-purple bg-gray-700 border-gray-600 rounded focus:ring-cosmic-purple"
+              className="w-5 h-5 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
             />
-            <Clock className="w-4 h-4 text-cosmic-purple" />
-            <span className="text-gray-300">Just-in-Time Access</span>
+            <Clock className="w-4 h-4 text-blue-600" />
+            <span className="text-gray-700">Just-in-Time Access</span>
           </label>
         </div>
       </div>
 
       {/* Compliance Requirements */}
       <div className="space-y-3">
-        <label className="flex items-center gap-2 text-lg font-semibold text-white">
-          <FileCheck className="w-5 h-5 text-cosmic-purple" />
+        <label className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+          <FileCheck className="w-5 h-5 text-blue-600" />
           Compliance Requirements
         </label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {complianceOptions.map((compliance) => (
             <label
               key={compliance}
-              className="flex items-center gap-2 p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-750 transition-colors"
+              className="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 hover:bg-blue-50 transition-colors"
             >
               <input
                 type="checkbox"
                 checked={requirements.complianceRequirement.includes(compliance)}
                 onChange={() => toggleCompliance(compliance)}
-                className="w-4 h-4 text-cosmic-purple bg-gray-700 border-gray-600 rounded focus:ring-cosmic-purple"
+                className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
               />
-              <span className="text-sm text-gray-300">{compliance}</span>
+              <span className="text-sm text-gray-700">{compliance}</span>
             </label>
           ))}
         </div>

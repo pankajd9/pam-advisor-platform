@@ -69,7 +69,7 @@ export default function ArchitectureAdvisor() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-12">
+    <div className="min-h-screen bg-white pt-20 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -78,12 +78,12 @@ export default function ArchitectureAdvisor() {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Network className="w-12 h-12 text-cosmic-purple" />
-            <h1 className="text-4xl md:text-5xl font-bold text-white">
+            <Network className="w-12 h-12 text-blue-600" />
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
               Architecture Advisor
             </h1>
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Design optimal PAM architecture for your organization
           </p>
         </motion.div>
@@ -95,7 +95,7 @@ export default function ArchitectureAdvisor() {
           transition={{ delay: 0.1 }}
           className="mb-12"
         >
-          <h2 className="text-3xl font-bold text-white mb-8">Common Architecture Patterns</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Architecture Patterns</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {architecturePatterns.map((pattern, index) => (
               <motion.div
@@ -103,21 +103,21 @@ export default function ArchitectureAdvisor() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + index * 0.1 }}
-                className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700 hover:border-cosmic-purple/50 transition-all duration-300"
+                className="bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <pattern.icon className="w-8 h-8 text-cosmic-purple" />
-                  <h3 className="text-xl font-bold text-white">{pattern.title}</h3>
+                  <pattern.icon className="w-8 h-8 text-blue-600" />
+                  <h3 className="text-xl font-bold text-gray-900">{pattern.title}</h3>
                 </div>
-                <p className="text-gray-300 mb-4">{pattern.description}</p>
+                <p className="text-gray-700 mb-4">{pattern.description}</p>
 
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-400 mb-2">Key Components:</h4>
+                  <h4 className="text-sm font-semibold text-gray-600 mb-2">Key Components:</h4>
                   <div className="flex flex-wrap gap-2">
                     {pattern.components.map((component) => (
                       <span
                         key={component}
-                        className="px-2 py-1 bg-cosmic-purple/20 text-cosmic-purple text-xs rounded-full"
+                        className="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-full"
                       >
                         {component}
                       </span>
@@ -126,11 +126,11 @@ export default function ArchitectureAdvisor() {
                 </div>
 
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-green-400 mb-2">Best For:</h4>
+                  <h4 className="text-sm font-semibold text-green-600 mb-2">Best For:</h4>
                   <ul className="space-y-1">
                     {pattern.bestFor.map((item) => (
-                      <li key={item} className="text-sm text-gray-300 flex items-start gap-2">
-                        <span className="text-green-400 mt-0.5">✓</span>
+                      <li key={item} className="text-sm text-gray-700 flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -138,11 +138,11 @@ export default function ArchitectureAdvisor() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-yellow-400 mb-2">Considerations:</h4>
+                  <h4 className="text-sm font-semibold text-yellow-600 mb-2">Considerations:</h4>
                   <ul className="space-y-1">
                     {pattern.considerations.map((item) => (
-                      <li key={item} className="text-sm text-gray-300 flex items-start gap-2">
-                        <span className="text-yellow-400 mt-0.5">!</span>
+                      <li key={item} className="text-sm text-gray-700 flex items-start gap-2">
+                        <span className="text-yellow-600 mt-0.5">!</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -160,7 +160,7 @@ export default function ArchitectureAdvisor() {
           transition={{ delay: 0.4 }}
           className="mb-12"
         >
-          <h2 className="text-3xl font-bold text-white mb-8">Core PAM Components</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Core PAM Components</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {components.map((component, index) => (
               <motion.div
@@ -168,20 +168,20 @@ export default function ArchitectureAdvisor() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + index * 0.05 }}
-                className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border ${
-                  component.critical ? 'border-cosmic-purple' : 'border-gray-700'
-                } hover:border-cosmic-purple/50 transition-all duration-300`}
+                className={`bg-white rounded-xl p-6 border ${
+                  component.critical ? 'border-blue-300' : 'border-gray-200'
+                } hover:border-blue-400 hover:shadow-lg transition-all duration-300`}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <component.icon className="w-8 h-8 text-cosmic-purple" />
+                  <component.icon className="w-8 h-8 text-blue-600" />
                   {component.critical && (
-                    <span className="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded-full">
+                    <span className="px-2 py-1 bg-red-50 text-red-600 text-xs rounded-full">
                       Critical
                     </span>
                   )}
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{component.name}</h3>
-                <p className="text-sm text-gray-300">{component.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{component.name}</h3>
+                <p className="text-sm text-gray-700">{component.description}</p>
               </motion.div>
             ))}
           </div>
@@ -192,63 +192,63 @@ export default function ArchitectureAdvisor() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700"
+          className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm"
         >
-          <h2 className="text-3xl font-bold text-white mb-8">Reference Architecture</h2>
-          <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-700">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Reference Architecture</h2>
+          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
             <div className="space-y-8">
               {/* User Layer */}
               <div className="text-center">
-                <div className="inline-block bg-cosmic-purple/20 border border-cosmic-purple rounded-lg px-6 py-3">
-                  <Users className="w-6 h-6 text-cosmic-purple mx-auto mb-2" />
-                  <div className="text-white font-semibold">Users & Administrators</div>
+                <div className="inline-block bg-blue-50 border border-blue-300 rounded-lg px-6 py-3">
+                  <Users className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold">Users & Administrators</div>
                 </div>
               </div>
 
               {/* Arrow */}
               <div className="flex justify-center">
-                <div className="w-0.5 h-8 bg-gradient-to-b from-cosmic-purple to-transparent"></div>
+                <div className="w-0.5 h-8 bg-gradient-to-b from-blue-400 to-transparent"></div>
               </div>
 
               {/* Access Layer */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-nebula-pink/20 border border-nebula-pink rounded-lg p-4 text-center">
-                  <Shield className="w-6 h-6 text-nebula-pink mx-auto mb-2" />
-                  <div className="text-white font-semibold text-sm">MFA Gateway</div>
+                <div className="bg-purple-50 border border-purple-300 rounded-lg p-4 text-center">
+                  <Shield className="w-6 h-6 text-purple-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold text-sm">MFA Gateway</div>
                 </div>
-                <div className="bg-nebula-pink/20 border border-nebula-pink rounded-lg p-4 text-center">
-                  <Lock className="w-6 h-6 text-nebula-pink mx-auto mb-2" />
-                  <div className="text-white font-semibold text-sm">Policy Engine</div>
+                <div className="bg-purple-50 border border-purple-300 rounded-lg p-4 text-center">
+                  <Lock className="w-6 h-6 text-purple-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold text-sm">Policy Engine</div>
                 </div>
-                <div className="bg-nebula-pink/20 border border-nebula-pink rounded-lg p-4 text-center">
-                  <Eye className="w-6 h-6 text-nebula-pink mx-auto mb-2" />
-                  <div className="text-white font-semibold text-sm">Session Manager</div>
+                <div className="bg-purple-50 border border-purple-300 rounded-lg p-4 text-center">
+                  <Eye className="w-6 h-6 text-purple-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold text-sm">Session Manager</div>
                 </div>
               </div>
 
               {/* Arrow */}
               <div className="flex justify-center">
-                <div className="w-0.5 h-8 bg-gradient-to-b from-nebula-pink to-transparent"></div>
+                <div className="w-0.5 h-8 bg-gradient-to-b from-purple-400 to-transparent"></div>
               </div>
 
               {/* Target Layer */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-green-400/20 border border-green-400 rounded-lg p-4 text-center">
-                  <Server className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                  <div className="text-white font-semibold text-sm">Servers</div>
+                <div className="bg-green-50 border border-green-300 rounded-lg p-4 text-center">
+                  <Server className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold text-sm">Servers</div>
                 </div>
-                <div className="bg-green-400/20 border border-green-400 rounded-lg p-4 text-center">
-                  <Cloud className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                  <div className="text-white font-semibold text-sm">Cloud Resources</div>
+                <div className="bg-green-50 border border-green-300 rounded-lg p-4 text-center">
+                  <Cloud className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold text-sm">Cloud Resources</div>
                 </div>
-                <div className="bg-green-400/20 border border-green-400 rounded-lg p-4 text-center">
-                  <Database className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                  <div className="text-white font-semibold text-sm">Databases</div>
+                <div className="bg-green-50 border border-green-300 rounded-lg p-4 text-center">
+                  <Database className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <div className="text-gray-900 font-semibold text-sm">Databases</div>
                 </div>
               </div>
             </div>
           </div>
-          <p className="text-sm text-gray-400 mt-4 text-center">
+          <p className="text-sm text-gray-600 mt-4 text-center">
             Simplified reference architecture showing key PAM components and data flow
           </p>
         </motion.div>

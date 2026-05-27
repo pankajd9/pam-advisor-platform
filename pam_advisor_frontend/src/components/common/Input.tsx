@@ -16,7 +16,10 @@ export const Input = ({ label, error, className, ...props }: InputProps) => {
       )}
       <input
         className={clsx(
-          'input-field',
+          'w-full bg-white border border-gray-300 rounded-lg px-4 py-3',
+          'text-gray-900 placeholder-gray-400',
+          'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500',
+          'transition-all duration-200',
           error && 'border-red-500 focus:ring-red-500',
           className
         )}
